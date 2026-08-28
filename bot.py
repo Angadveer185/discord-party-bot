@@ -43,9 +43,7 @@ async def on_voice_state_update(member, before, after):
 
         channel = after.channel
 
-        members_before = len(channel.members) - 1
-
-        if members_before == 0 and channel.id not in active_parties:
+        if len(channel.members) == 1 and channel.id not in active_parties:
 
             now = time.time()
 
@@ -74,7 +72,7 @@ async def on_voice_state_update(member, before, after):
                 )
 
                 await announcements.send(
-                    "@everyone",
+                    f"🎮 **{member.display_name}** started a party in **{channel.name}**! @everyone",
                     embed=embed
                 )
 
