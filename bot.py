@@ -43,7 +43,9 @@ async def on_voice_state_update(member, before, after):
 
         channel = after.channel
 
-        if len(channel.members) == 1 and channel.id not in active_parties:
+        members_before = len(channel.members) - 1
+
+        if members_before == 0 and channel.id not in active_parties:
 
             now = time.time()
 
